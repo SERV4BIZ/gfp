@@ -9,7 +9,7 @@ import (
 	"strings"
 
 	"github.com/SERV4BIZ/gfp/collection"
-	"github.com/SERV4BIZ/gfp/filesystem"
+	"github.com/SERV4BIZ/gfp/files"
 	"github.com/SERV4BIZ/gfp/handler"
 )
 
