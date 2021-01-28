@@ -504,7 +504,7 @@ func (me *JSONObject) Equals(src *JSONObject) bool {
 
 // Copy is clone data myseft to a new JSONObject object
 func (me *JSONObject) Copy() (*JSONObject, error) {
-	return JSONObjectFromString(me.ToString())
+	return jsons.JSONObjectFromString(me.ToString())
 }
 
 // Clone is same Copy function
