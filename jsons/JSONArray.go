@@ -11,6 +11,7 @@ import (
 	"github.com/SERV4BIZ/gfp/collection"
 	"github.com/SERV4BIZ/gfp/files"
 	"github.com/SERV4BIZ/gfp/handler"
+	"github.com/SERV4BIZ/gfp/jsons"
 )
 
 // JSONArray is data struct for JSONArray object
@@ -77,7 +78,7 @@ func (me *JSONArray) PutNull() *JSONArray {
 }
 
 // PutObject is put object data item
-func (me *JSONArray) PutObject(value *JSONObject) *JSONArray {
+func (me *JSONArray) PutObject(value *jsons.JSONObject) *JSONArray {
 	me.datalist.Put(value)
 	return me
 }
@@ -291,18 +292,18 @@ func (me *JSONArray) GetNull(index int) interface{} {
 }
 
 // GetObject is get object item from index
-func (me *JSONArray) GetObject(index int) *JSONObject {
+func (me *JSONArray) GetObject(index int) *jsons.JSONObject {
 	if index < 0 || index >= me.Length() {
-		nobj := new(JSONObject).Factory()
+		nobj := new(jsons.JSONObject).Factory()
 		return nobj
 	}
 
 	tname := me.GetType(index)
 	if tname == "object" {
-		return me.GetObjectData().Get(index).(*JSONObject)
+		return me.GetObjectData().Get(index).(*jsons.JSONObject)
 	}
 
-	nobj := new(JSONObject).Factory()
+	nobj := new(jsons.JSONObject).Factory()
 	return nobj
 }
 
@@ -381,7 +382,7 @@ func (me *JSONArray) ToFile(pathfile string) (int, error) {
 
 // FromString is load json array data from string buffer
 func (me *JSONArray) FromString(buffer string) (*JSONArray, error) {
-	nobj, err := JSONArrayFromString(buffer)
+	nobj, err := jsons.JSONArrayFromString(buffer)
 	if handler.Error(err) {
 		return nil, err
 	}
@@ -398,7 +399,7 @@ func (me *JSONArray) ReadString(buffer string) (*JSONArray, error) {
 
 // FromFile is load json array data from file
 func (me *JSONArray) FromFile(pathfile string) (*JSONArray, error) {
-	nobj, err := JSONArrayFromFile(pathfile)
+	nobj, err := jsons.JSONArrayFromFile(pathfile)
 	if handler.Error(err) {
 		return nil, err
 	}
@@ -481,7 +482,7 @@ func (me *JSONArray) Equals(src *JSONArray) bool {
 
 // Copy is clone data myseft to a new JSONArray object
 func (me *JSONArray) Copy() (*JSONArray, error) {
-	return JSONArrayFromString(me.ToString())
+	return jsons.JSONArrayFromString(me.ToString())
 }
 
 // Clone is same Copy function

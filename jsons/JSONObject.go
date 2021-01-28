@@ -11,6 +11,7 @@ import (
 	"github.com/SERV4BIZ/gfp/collection"
 	"github.com/SERV4BIZ/gfp/files"
 	"github.com/SERV4BIZ/gfp/handler"
+	"github.com/SERV4BIZ/gfp/jsons"
 )
 
 // JSONObject is data struct JSONObject object
@@ -98,7 +99,7 @@ func (me *JSONObject) PutObject(key string, value *JSONObject) *JSONObject {
 }
 
 // PutArray is put array data item
-func (me *JSONObject) PutArray(key string, value *JSONArray) *JSONObject {
+func (me *JSONObject) PutArray(key string, value *jsons.JSONArray) *JSONObject {
 	me.datamap.Put(key, value)
 	return me
 }
@@ -321,18 +322,18 @@ func (me *JSONObject) GetObject(key string) *JSONObject {
 }
 
 // GetArray is get array data from key
-func (me *JSONObject) GetArray(key string) *JSONArray {
+func (me *JSONObject) GetArray(key string) *jsons.JSONArray {
 	if !me.ContainsKey(key) {
-		narr := new(JSONArray).Factory()
+		narr := new(jsons.JSONArray).Factory()
 		return narr
 	}
 
 	tname := me.GetType(key)
 	if tname == "array" {
-		return me.GetObjectData().Get(key).(*JSONArray)
+		return me.GetObjectData().Get(key).(*jsons.JSONArray)
 	}
 
-	narr := new(JSONArray).Factory()
+	narr := new(jsons.JSONArray).Factory()
 	return narr
 }
 
@@ -401,7 +402,7 @@ func (me *JSONObject) ToFile(pathfile string) (int, error) {
 
 // FromString is load json object data from string
 func (me *JSONObject) FromString(buffer string) (*JSONObject, error) {
-	nobj, err := JSONObjectFromString(buffer)
+	nobj, err := jsons.JSONObjectFromString(buffer)
 	if handler.Error(err) {
 		return nil, err
 	}
@@ -418,7 +419,7 @@ func (me *JSONObject) ReadString(buffer string) (*JSONObject, error) {
 
 // FromFile is load json object data from file
 func (me *JSONObject) FromFile(pathfile string) (*JSONObject, error) {
-	nobj, err := JSONObjectFromFile(pathfile)
+	nobj, err := jsons.JSONObjectFromFile(pathfile)
 	if handler.Error(err) {
 		return nil, err
 	}
