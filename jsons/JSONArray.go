@@ -376,7 +376,7 @@ func (me *JSONArray) ToString() string {
 // ToFile is write JSON array data to file
 func (me *JSONArray) ToFile(pathfile string) (int, error) {
 	buffer := me.ToString()
-	return filesystem.WriteFile(pathfile, []byte(buffer))
+	return files.WriteFile(pathfile, []byte(buffer))
 }
 
 // FromString is load json array data from string buffer

@@ -7,6 +7,7 @@ import (
 	"reflect"
 	"strings"
 
+	"github.com/SERV4BIZ/gfp/files"
 	"github.com/SERV4BIZ/gfp/handler"
 )
 
@@ -72,8 +73,8 @@ func JSONObjectFromString(buffer string) (*JSONObject, error) {
 
 // JSONArrayFromFile is load JSONArray object from file
 func JSONArrayFromFile(pathfile string) (*JSONArray, error) {
-	if filesystem.ExistFile(pathfile) {
-		bbyte, err := filesystem.ReadFile(pathfile)
+	if files.ExistFile(pathfile) {
+		bbyte, err := files.ReadFile(pathfile)
 		if !handler.Error(err) {
 			buffer := string(bbyte)
 			return JSONArrayFromString(buffer)
@@ -86,8 +87,8 @@ func JSONArrayFromFile(pathfile string) (*JSONArray, error) {
 
 // JSONObjectFromFile is load JSONObject object from file
 func JSONObjectFromFile(pathfile string) (*JSONObject, error) {
-	if filesystem.ExistFile(pathfile) {
-		bbyte, err := filesystem.ReadFile(pathfile)
+	if files.ExistFile(pathfile) {
+		bbyte, err := files.ReadFile(pathfile)
 		if !handler.Error(err) {
 			buffer := string(bbyte)
 			return JSONObjectFromString(buffer)

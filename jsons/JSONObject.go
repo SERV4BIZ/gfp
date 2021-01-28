@@ -396,7 +396,7 @@ func (me *JSONObject) ToString() string {
 
 // ToFile to write json object data to file
 func (me *JSONObject) ToFile(pathfile string) (int, error) {
-	return filesystem.WriteFile(pathfile, []byte(me.ToString()))
+	return files.WriteFile(pathfile, []byte(me.ToString()))
 }
 
 // FromString is load json object data from string
