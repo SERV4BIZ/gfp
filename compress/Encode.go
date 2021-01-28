@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"compress/zlib"
 
-	"github.com/SERV4BIZ/handler"
+	"github.com/SERV4BIZ/gfp/handler"
 )
 
 // Encode is encode compress data from buffer bytes

@@ -7,8 +7,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/SERV4BIZ/files"
-	"github.com/SERV4BIZ/handler"
+	"github.com/SERV4BIZ/gfp/handler"
 )
 
 // JSONDataValidate is convert data interface validate

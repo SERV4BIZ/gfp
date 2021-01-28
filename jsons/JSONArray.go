@@ -8,9 +8,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/SERV4BIZ/collection"
-	"github.com/SERV4BIZ/filesystem"
-	"github.com/SERV4BIZ/handler"
+	"github.com/SERV4BIZ/gfp/collection"
+	"github.com/SERV4BIZ/gfp/filesystem"
+	"github.com/SERV4BIZ/gfp/handler"
 )
 
 // JSONArray is data struct for JSONArray object

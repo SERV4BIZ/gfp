@@ -9,8 +9,8 @@ import (
 	"net"
 	"time"
 
-	"github.com/SERV4BIZ/compress"
-	"github.com/SERV4BIZ/handler"
+	"github.com/SERV4BIZ/gfp/compress"
+	"github.com/SERV4BIZ/gfp/handler"
 )
 
 // TCPClient is structure

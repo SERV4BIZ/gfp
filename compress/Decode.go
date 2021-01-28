@@ -5,7 +5,7 @@ import (
 	"compress/zlib"
 	"io/ioutil"
 
-	"github.com/SERV4BIZ/handler"
+	"github.com/SERV4BIZ/gfp/handler"
 )
 
 // Decode is decode compress data from buffer bytes

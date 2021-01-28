@@ -8,9 +8,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/SERV4BIZ/collection"
-	"github.com/SERV4BIZ/files"
-	"github.com/SERV4BIZ/handler"
+	"github.com/SERV4BIZ/gfp/collection"
+	"github.com/SERV4BIZ/gfp/filesystem"
+	"github.com/SERV4BIZ/gfp/handler"
 )
 
 // JSONObject is data struct JSONObject object

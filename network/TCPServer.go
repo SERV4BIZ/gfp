@@ -6,7 +6,7 @@ import (
 	"net"
 	"time"
 
-	"github.com/SERV4BIZ/handler"
+	"github.com/SERV4BIZ/gfp/handler"
 )
 
 // TCPServer is structure object

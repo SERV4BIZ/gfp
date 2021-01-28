@@ -4,7 +4,7 @@ import (
 	"io/ioutil"
 	"strings"
 
-	"github.com/SERV4BIZ/handler"
+	"github.com/SERV4BIZ/gfp/handler"
 )
 
 // ReadFile is read file to buffer bytes from path file
