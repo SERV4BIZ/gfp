@@ -78,7 +78,7 @@ func (me *JSONArray) PutNull() *JSONArray {
 }
 
 // PutObject is put object data item
-func (me *JSONArray) PutObject(value *jsons.JSONObject) *JSONArray {
+func (me *JSONArray) PutObject(value *JSONObject) *JSONArray {
 	me.datalist.Put(value)
 	return me
 }
@@ -292,18 +292,18 @@ func (me *JSONArray) GetNull(index int) interface{} {
 }
 
 // GetObject is get object item from index
-func (me *JSONArray) GetObject(index int) *jsons.JSONObject {
+func (me *JSONArray) GetObject(index int) *JSONObject {
 	if index < 0 || index >= me.Length() {
-		nobj := new(jsons.JSONObject).Factory()
+		nobj := new(JSONObject).Factory()
 		return nobj
 	}
 
 	tname := me.GetType(index)
 	if tname == "object" {
-		return me.GetObjectData().Get(index).(*jsons.JSONObject)
+		return me.GetObjectData().Get(index).(*JSONObject)
 	}
 
-	nobj := new(jsons.JSONObject).Factory()
+	nobj := new(JSONObject).Factory()
 	return nobj
 }
 
@@ -387,7 +387,7 @@ func (me *JSONArray) FromString(buffer string) (*JSONArray, error) {
 		return nil, err
 	}
 
-	me.datalist = nobj.datalist
+	me.datalist = nobj.GetObjectData()
 	nobj = nil
 	return me, err
 }
@@ -404,7 +404,7 @@ func (me *JSONArray) FromFile(pathfile string) (*JSONArray, error) {
 		return nil, err
 	}
 
-	me.datalist = nobj.datalist
+	me.datalist = nobj.GetObjectData()
 	nobj = nil
 	return me, err
 }

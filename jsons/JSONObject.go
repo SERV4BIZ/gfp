@@ -322,18 +322,18 @@ func (me *JSONObject) GetObject(key string) *JSONObject {
 }
 
 // GetArray is get array data from key
-func (me *JSONObject) GetArray(key string) *jsons.JSONArray {
+func (me *JSONObject) GetArray(key string) *JSONArray {
 	if !me.ContainsKey(key) {
-		narr := new(jsons.JSONArray).Factory()
+		narr := new(JSONArray).Factory()
 		return narr
 	}
 
 	tname := me.GetType(key)
 	if tname == "array" {
-		return me.GetObjectData().Get(key).(*jsons.JSONArray)
+		return me.GetObjectData().Get(key).(*JSONArray)
 	}
 
-	narr := new(jsons.JSONArray).Factory()
+	narr := new(JSONArray).Factory()
 	return narr
 }
 
@@ -407,7 +407,7 @@ func (me *JSONObject) FromString(buffer string) (*JSONObject, error) {
 		return nil, err
 	}
 
-	me.datamap = nobj.datamap
+	me.datamap = nobj.GetObjectData()
 	nobj = nil
 	return me, err
 }
@@ -424,7 +424,7 @@ func (me *JSONObject) FromFile(pathfile string) (*JSONObject, error) {
 		return nil, err
 	}
 
-	me.datamap = nobj.datamap
+	me.datamap = nobj.GetObjectData()
 	nobj = nil
 	return me, err
 }
@@ -504,7 +504,7 @@ func (me *JSONObject) Equals(src *JSONObject) bool {
 
 // Copy is clone data myseft to a new JSONObject object
 func (me *JSONObject) Copy() (*JSONObject, error) {
-	return jsons.JSONObjectFromString(me.ToString())
+	return JSONObjectFromString(me.ToString())
 }
 
 // Clone is same Copy function
@@ -512,7 +512,7 @@ func (me *JSONObject) Clone() (*JSONObject, error) {
 	return me.Copy()
 }
 
-// Merge is merge myseft and other JSONArray object to a new JSONArray object
+// Merge is merge myseft and other JSONObject object to a new JSONObject object
 func (me *JSONObject) Merge(src *JSONObject) *JSONObject {
 	nobj := new(JSONObject).Factory()
 	nobj.Fill(me)

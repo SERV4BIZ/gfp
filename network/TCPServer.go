@@ -61,7 +61,7 @@ func (me *TCPServer) Accept() (*TCPClient, error) {
 	conn, errAcc := me.listen.AcceptTCP()
 	if !handler.Error(errAcc) {
 		client := new(TCPClient).Factory(me.host, me.port)
-		client.conn = conn
+		client.Conn = conn
 		return client, errAcc
 	}
 	return nil, errAcc
