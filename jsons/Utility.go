@@ -56,6 +56,16 @@ func JSONArrayFromString(buffer string) (*JSONArray, error) {
 	return datalist, nil
 }
 
+// JSONArrayString is convert json array string to JSONArray object
+func JSONArrayString(buffer string) (*JSONArray, error) {
+	return JSONArrayFromString(buffer)
+}
+
+// ArrayString is convert json array string to JSONArray object
+func ArrayString(buffer string) (*JSONArray, error) {
+	return JSONArrayFromString(buffer)
+}
+
 // JSONObjectFromString is convert json object string to JSONObject object
 func JSONObjectFromString(buffer string) (*JSONObject, error) {
 	var data map[string]interface{}
@@ -69,6 +79,16 @@ func JSONObjectFromString(buffer string) (*JSONObject, error) {
 		dataobj.GetObjectData().Put(key, JSONDataValidate(value))
 	}
 	return dataobj, nil
+}
+
+// JSONObjectString is convert json object string to JSONObject object
+func JSONObjectString(buffer string) (*JSONObject, error) {
+	return JSONObjectFromString(buffer)
+}
+
+// ObjectString is convert json object string to JSONObject object
+func ObjectString(buffer string) (*JSONObject, error) {
+	return JSONObjectFromString(buffer)
 }
 
 // JSONArrayFromFile is load JSONArray object from file
@@ -85,6 +105,16 @@ func JSONArrayFromFile(pathfile string) (*JSONArray, error) {
 	return nobj, nil
 }
 
+// JSONArrayFile is load JSONArray object from file
+func JSONArrayFile(pathfile string) (*JSONArray, error) {
+	return JSONArrayFromFile(pathfile)
+}
+
+// ArrayFile is load JSONArray object from file
+func ArrayFile(pathfile string) (*JSONArray, error) {
+	return JSONArrayFromFile(pathfile)
+}
+
 // JSONObjectFromFile is load JSONObject object from file
 func JSONObjectFromFile(pathfile string) (*JSONObject, error) {
 	if files.ExistFile(pathfile) {
@@ -97,4 +127,14 @@ func JSONObjectFromFile(pathfile string) (*JSONObject, error) {
 	}
 	nobj := new(JSONObject).Factory()
 	return nobj, nil
+}
+
+// JSONObjectFile is load JSONObject object from file
+func JSONObjectFile(pathfile string) (*JSONObject, error) {
+	return JSONObjectFromFile(pathfile)
+}
+
+// ObjectFile is load JSONObject object from file
+func ObjectFile(pathfile string) (*JSONObject, error) {
+	return JSONObjectFromFile(pathfile)
 }

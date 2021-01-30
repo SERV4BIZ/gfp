@@ -23,11 +23,31 @@ func JSONObjectFactory() *JSONObject {
 	return new(JSONObject).Factory()
 }
 
+// JSONObjectNew is global create a new JSONObject object
+func JSONObjectNew() *JSONObject {
+	return JSONObjectFactory()
+}
+
+// ObjectFactory is global create a new JSONObject object
+func ObjectFactory() *JSONObject {
+	return JSONObjectFactory()
+}
+
+// ObjectNew is global create a new JSONObject object
+func ObjectNew() *JSONObject {
+	return JSONObjectFactory()
+}
+
 // Factory is create a new JSONObject object
 func (me *JSONObject) Factory() *JSONObject {
 	mapkey := new(collection.MapKey).Factory()
 	me.datamap = mapkey
 	return me
+}
+
+// New is create a new JSONObject object
+func (me *JSONObject) New() *JSONObject {
+	return me.Factory()
 }
 
 // GetObjectData is get raw data

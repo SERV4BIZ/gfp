@@ -18,9 +18,24 @@ type JSONArray struct {
 	datalist *collection.ArrayList
 }
 
-// JSONArrayFactory is global create a new JSONArrayFactory
+// JSONArrayFactory is global create a new JSONArray
 func JSONArrayFactory() *JSONArray {
 	return new(JSONArray).Factory()
+}
+
+// JSONArrayNew is global create a new JSONArray
+func JSONArrayNew() *JSONArray {
+	return JSONArrayFactory()
+}
+
+// ArrayFactory is global create a new JSONArray
+func ArrayFactory() *JSONArray {
+	return JSONArrayFactory()
+}
+
+// ArrayNew is global create a new JSONArray
+func ArrayNew() *JSONArray {
+	return JSONArrayFactory()
 }
 
 // Factory is create a new JSONArray object
@@ -28,6 +43,11 @@ func (me *JSONArray) Factory() *JSONArray {
 	nlist := new(collection.ArrayList).Factory()
 	me.datalist = nlist
 	return me
+}
+
+// New is create a new JSONArray object
+func (me *JSONArray) New() *JSONArray {
+	return me.Factory()
 }
 
 // GetObjectData is get raw data
