@@ -98,7 +98,7 @@ func (me *JSONObject) PutObject(key string, value *JSONObject) *JSONObject {
 }
 
 // PutArray is put array data item
-func (me *JSONObject) PutArray(key string, value *jsons.JSONArray) *JSONObject {
+func (me *JSONObject) PutArray(key string, value *JSONArray) *JSONObject {
 	me.datamap.Put(key, value)
 	return me
 }
@@ -401,7 +401,7 @@ func (me *JSONObject) ToFile(pathfile string) (int, error) {
 
 // FromString is load json object data from string
 func (me *JSONObject) FromString(buffer string) (*JSONObject, error) {
-	nobj, err := jsons.JSONObjectFromString(buffer)
+	nobj, err := JSONObjectFromString(buffer)
 	if handler.Error(err) {
 		return nil, err
 	}
@@ -418,7 +418,7 @@ func (me *JSONObject) ReadString(buffer string) (*JSONObject, error) {
 
 // FromFile is load json object data from file
 func (me *JSONObject) FromFile(pathfile string) (*JSONObject, error) {
-	nobj, err := jsons.JSONObjectFromFile(pathfile)
+	nobj, err := JSONObjectFromFile(pathfile)
 	if handler.Error(err) {
 		return nil, err
 	}

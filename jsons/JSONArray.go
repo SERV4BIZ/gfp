@@ -381,7 +381,7 @@ func (me *JSONArray) ToFile(pathfile string) (int, error) {
 
 // FromString is load json array data from string buffer
 func (me *JSONArray) FromString(buffer string) (*JSONArray, error) {
-	nobj, err := jsons.JSONArrayFromString(buffer)
+	nobj, err := JSONArrayFromString(buffer)
 	if handler.Error(err) {
 		return nil, err
 	}
@@ -398,7 +398,7 @@ func (me *JSONArray) ReadString(buffer string) (*JSONArray, error) {
 
 // FromFile is load json array data from file
 func (me *JSONArray) FromFile(pathfile string) (*JSONArray, error) {
-	nobj, err := jsons.JSONArrayFromFile(pathfile)
+	nobj, err := JSONArrayFromFile(pathfile)
 	if handler.Error(err) {
 		return nil, err
 	}
@@ -481,7 +481,7 @@ func (me *JSONArray) Equals(src *JSONArray) bool {
 
 // Copy is clone data myseft to a new JSONArray object
 func (me *JSONArray) Copy() (*JSONArray, error) {
-	return jsons.JSONArrayFromString(me.ToString())
+	return JSONArrayFromString(me.ToString())
 }
 
 // Clone is same Copy function
