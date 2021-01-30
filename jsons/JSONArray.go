@@ -11,7 +11,6 @@ import (
 	"github.com/SERV4BIZ/gfp/collection"
 	"github.com/SERV4BIZ/gfp/files"
 	"github.com/SERV4BIZ/gfp/handler"
-	"github.com/SERV4BIZ/gfp/jsons"
 )
 
 // JSONArray is data struct for JSONArray object
