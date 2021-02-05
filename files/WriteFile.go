@@ -3,8 +3,6 @@ package files
 import (
 	"io/ioutil"
 	"strings"
-
-	"github.com/SERV4BIZ/gfp/handler"
 )
 
 // WriteFile is write buffer byte to path file
@@ -16,7 +14,7 @@ func WriteFile(pathFile string, buffer []byte) (int, error) {
 
 	size := len(buffer)
 	err := ioutil.WriteFile(newPathFile, buffer, 0777)
-	if handler.Error(err) {
+	if err != nil {
 		return -1, err
 	}
 	return size, err

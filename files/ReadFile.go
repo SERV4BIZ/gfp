@@ -3,8 +3,6 @@ package files
 import (
 	"io/ioutil"
 	"strings"
-
-	"github.com/SERV4BIZ/gfp/handler"
 )
 
 // ReadFile is read file to buffer bytes from path file
@@ -15,7 +13,7 @@ func ReadFile(pathFile string) ([]byte, error) {
 	defer mtx.RUnlock()
 
 	buffer, err := ioutil.ReadFile(newPathFile)
-	if handler.Error(err) {
+	if err != nil {
 		return nil, err
 	}
 	return buffer, err
