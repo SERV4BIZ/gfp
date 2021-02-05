@@ -66,6 +66,20 @@ func ArrayString(buffer string) (*JSONArray, error) {
 	return JSONArrayFromString(buffer)
 }
 
+// JSONArrayParse is parse from slice array to json array object
+func JSONArrayParse(v interface{}) (*JSONArray, error) {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return nil, err
+	}
+	return JSONArrayFromString(string(b))
+}
+
+// ArrayParse is parse from slice array to json array object
+func ArrayParse(v interface{}) (*JSONArray, error) {
+	return JSONArrayParse(v)
+}
+
 // JSONObjectFromString is convert json object string to JSONObject object
 func JSONObjectFromString(buffer string) (*JSONObject, error) {
 	var data map[string]interface{}
@@ -89,6 +103,20 @@ func JSONObjectString(buffer string) (*JSONObject, error) {
 // ObjectString is convert json object string to JSONObject object
 func ObjectString(buffer string) (*JSONObject, error) {
 	return JSONObjectFromString(buffer)
+}
+
+// JSONObjectParse is parse from mapkey object to json object
+func JSONObjectParse(v interface{}) (*JSONObject, error) {
+	b, err := json.Marshal(v)
+	if err != nil {
+		return nil, err
+	}
+	return JSONObjectFromString(string(b))
+}
+
+// ObjectParse is parse from mapkey object to json object
+func ObjectParse(v interface{}) (*JSONObject, error) {
+	return JSONObjectParse(v)
 }
 
 // JSONArrayFromFile is load JSONArray object from file
