@@ -8,7 +8,6 @@ import (
 	"strings"
 
 	"github.com/SERV4BIZ/gfp/files"
-	"github.com/SERV4BIZ/gfp/handler"
 )
 
 // JSONDataValidate is convert data interface validate
@@ -45,7 +44,7 @@ func JSONDataValidate(data interface{}) interface{} {
 func JSONArrayFromString(buffer string) (*JSONArray, error) {
 	var data []interface{}
 	err := json.Unmarshal([]byte(buffer), &data)
-	if handler.Error(err) {
+	if err != nil {
 		return nil, err
 	}
 
@@ -84,7 +83,7 @@ func ArrayParse(v interface{}) (*JSONArray, error) {
 func JSONObjectFromString(buffer string) (*JSONObject, error) {
 	var data map[string]interface{}
 	err := json.Unmarshal([]byte(buffer), &data)
-	if handler.Error(err) {
+	if err != nil {
 		return nil, err
 	}
 
@@ -123,11 +122,11 @@ func ObjectParse(v interface{}) (*JSONObject, error) {
 func JSONArrayFromFile(pathfile string) (*JSONArray, error) {
 	if files.ExistFile(pathfile) {
 		bbyte, err := files.ReadFile(pathfile)
-		if !handler.Error(err) {
-			buffer := string(bbyte)
-			return JSONArrayFromString(buffer)
+		if err != nil {
+			return nil, err
 		}
-		return nil, err
+		buffer := string(bbyte)
+		return JSONArrayFromString(buffer)
 	}
 	nobj := new(JSONArray).Factory()
 	return nobj, nil
@@ -147,11 +146,11 @@ func ArrayFile(pathfile string) (*JSONArray, error) {
 func JSONObjectFromFile(pathfile string) (*JSONObject, error) {
 	if files.ExistFile(pathfile) {
 		bbyte, err := files.ReadFile(pathfile)
-		if !handler.Error(err) {
-			buffer := string(bbyte)
-			return JSONObjectFromString(buffer)
+		if err != nil {
+			return nil, err
 		}
-		return nil, err
+		buffer := string(bbyte)
+		return JSONObjectFromString(buffer)
 	}
 	nobj := new(JSONObject).Factory()
 	return nobj, nil

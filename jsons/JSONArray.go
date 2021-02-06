@@ -10,7 +10,6 @@ import (
 
 	"github.com/SERV4BIZ/gfp/collection"
 	"github.com/SERV4BIZ/gfp/files"
-	"github.com/SERV4BIZ/gfp/handler"
 )
 
 // JSONArray is data struct for JSONArray object
@@ -402,7 +401,7 @@ func (me *JSONArray) ToFile(pathfile string) (int, error) {
 // FromString is load json array data from string buffer
 func (me *JSONArray) FromString(buffer string) (*JSONArray, error) {
 	nobj, err := JSONArrayFromString(buffer)
-	if handler.Error(err) {
+	if err != nil {
 		return nil, err
 	}
 
@@ -419,7 +418,7 @@ func (me *JSONArray) ReadString(buffer string) (*JSONArray, error) {
 // FromFile is load json array data from file
 func (me *JSONArray) FromFile(pathfile string) (*JSONArray, error) {
 	nobj, err := JSONArrayFromFile(pathfile)
-	if handler.Error(err) {
+	if err != nil {
 		return nil, err
 	}
 

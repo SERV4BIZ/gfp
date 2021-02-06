@@ -10,7 +10,6 @@ import (
 
 	"github.com/SERV4BIZ/gfp/collection"
 	"github.com/SERV4BIZ/gfp/files"
-	"github.com/SERV4BIZ/gfp/handler"
 )
 
 // JSONObject is data struct JSONObject object
@@ -422,7 +421,7 @@ func (me *JSONObject) ToFile(pathfile string) (int, error) {
 // FromString is load json object data from string
 func (me *JSONObject) FromString(buffer string) (*JSONObject, error) {
 	nobj, err := JSONObjectFromString(buffer)
-	if handler.Error(err) {
+	if err != nil {
 		return nil, err
 	}
 
@@ -439,7 +438,7 @@ func (me *JSONObject) ReadString(buffer string) (*JSONObject, error) {
 // FromFile is load json object data from file
 func (me *JSONObject) FromFile(pathfile string) (*JSONObject, error) {
 	nobj, err := JSONObjectFromFile(pathfile)
-	if handler.Error(err) {
+	if err != nil {
 		return nil, err
 	}
 
